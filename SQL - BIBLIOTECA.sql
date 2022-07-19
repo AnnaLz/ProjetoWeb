@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS ASSOCIADO (
   Nome varchar(35) NOT NULL,
   Endereco varchar(45) NOT NULL,
   Email varchar(20) NOT NULL,
+  Senha varchar(20) NOT NULL,
   Status tipo_associado NOT NULL,
   PRIMARY KEY (Codigo)
 );
