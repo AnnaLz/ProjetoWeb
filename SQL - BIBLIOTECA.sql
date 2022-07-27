@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS FUNCIONARIO (
   Nome varchar(35) NOT NULL,
   Funcao tipo_funcionario NOT NULL,
   Email varchar(20) NOT NULL,
+  Senha varchar(20) NOT NULL,
   PRIMARY KEY (Codigo)
 );
 

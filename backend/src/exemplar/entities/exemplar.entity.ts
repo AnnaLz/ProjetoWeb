@@ -7,9 +7,9 @@ export class Exemplar {
     @PrimaryColumn({name: 'numero', type: 'int'})
     numero: number;
 
-    @PrimaryColumn({name: 'isbn', type: 'varchar', length: 12})
+    @PrimaryColumn()
     @OneToOne(() => Publicacao, { cascade : true , eager : true})
-    @JoinColumn()
+    @JoinColumn({name: 'isbn'})
     isbn: Publicacao;
 
     @Column({name: 'preco', type: 'float', default: null})

@@ -14,42 +14,11 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // toHome(){
-  //   this.router.navigate(['/home']);
-  // }
+  toLogin(){
+    this.router.navigate(['/login']);
+  }
 
-  // toVinhos(){
-  //   this.router.navigate(['/vinhos']);
-  // }
-
-  // toHarmonizacoes(){
-  //   this.router.navigate(['/harmonizacoes']);
-  // }
-
-  // toUvas(){
-  //   this.router.navigate(['/uvas']);
-  // }
-
-  // toCarrinho(){
-  //   this.router.navigate(['/carrinho']);
-  // }
-
-  // /*toLogin(){
-  //   const teste = Swal.fire({
-  //     icon: 'success',
-  //     title: 'swal'
-  //   })
-  // }*/
-
-  // toLogin(){
-  // //   const dialogRef = this.dialog.open(LoginComponent, {
-  // //     width: '520px',
-  // //     height: '400px'
-  // //   });
-
-  // //   dialogRef.afterClosed().subscribe(result => {});
-  // // }
-
-// }
-
+  toLoginFuncionarios(){
+    this.router.navigate(['/home']);
+  }
 }

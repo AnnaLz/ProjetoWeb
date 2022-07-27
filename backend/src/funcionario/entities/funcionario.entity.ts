@@ -16,6 +16,9 @@ export class Funcionario extends BaseEntity {
     @Column({name: 'email', type: 'varchar', length: 20})
     email: string;
 
+    @Column({name: 'senha', type: 'varchar', length: 20})
+    senha: string;
+
     @Column({name: 'funcao', type: 'enum', enum: tipo_funcionario})
     funcao: tipo_funcionario;
 }

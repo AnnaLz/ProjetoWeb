@@ -10,7 +10,7 @@ export class AssociadoService {
   constructor(@InjectRepository(Associado) private readonly repository: Repository<Associado>){}
 
   create(associado: CreateAssociadoDto): Promise<Associado> {
-    const newAssociado = this.repository.create(associado);
+    const newAssociado = this.repository.create(associado)
     return this.repository.save(newAssociado);
   }
 

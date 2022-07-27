@@ -6,7 +6,7 @@ export enum tipo_associado {
     prof = 'Prof'
 }
 
-@Entity()
+@Entity('associado')
 export class Associado extends BaseEntity {
     @PrimaryGeneratedColumn()
     codigo: number;

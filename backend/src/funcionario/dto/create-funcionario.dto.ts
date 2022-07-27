@@ -13,4 +13,8 @@ export class CreateFuncionarioDto {
     @IsEmail()
     @IsNotEmpty()
     email: string;
+
+    @IsString()
+    @IsNotEmpty()
+    senha: string;
 }

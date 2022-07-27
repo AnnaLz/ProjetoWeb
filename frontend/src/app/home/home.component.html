@@ -1,14 +1,30 @@
-<body>
-    <div class="box">
-        <div class="box-content">
-            <mat-form-field floatLabel="always">
-                <input matInput placeholder="Código">
-            </mat-form-field>
-                
-            <mat-form-field floatLabel="always">
-                <input matInput placeholder="Senha">
-            </mat-form-field>
-            <button mat-flat-button color="primary">Primary</button>
-        </div>
-    </div>
-</body>
+<mat-tab-group dynamicHeight preserveContent>
+    <mat-tab label="Associados">
+        <button mat-flat-button color="primary" class="add-button" (click)="cadastrar('Associado')">Cadastrar associado</button>
+
+        <app-table *ngIf="show" [data]="associados" [displayedColumns]="associadosColumns" style="margin: 2%;"></app-table>
+    </mat-tab>
+
+
+    <mat-tab label="Publicações">
+        <button mat-flat-button color="primary" class="add-button" (click)="cadastrar('Publicação')">Cadastrar publicação</button>
+   
+        <app-table *ngIf="show" [data]="publicacoes" [displayedColumns]="publicacoesColumns" style="margin: 2%;"></app-table>
+    </mat-tab>
+
+
+    <mat-tab label="Exemplares">
+        <button mat-flat-button color="primary" class="add-button" (click)="cadastrar('Exemplar')">Cadastrar exemplar</button>
+   
+        <app-table *ngIf="show" [data]="exemplar" [displayedColumns]="exemplarColumns" style="margin: 2%;"></app-table>
+    </mat-tab>
+
+
+    <mat-tab label="Empréstimos"> Content 3 </mat-tab>
+
+
+    <mat-tab label="Relatórios"> Content 3 </mat-tab>
+  </mat-tab-group>
+
+
+
