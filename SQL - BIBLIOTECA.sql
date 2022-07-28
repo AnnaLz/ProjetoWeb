@@ -1,6 +1,6 @@
 CREATE TYPE tipo_associado AS ENUM ('Grad','Posgrad','Prof');
 CREATE TYPE tipo_funcionario AS ENUM ('gerente','funcionario');
-CREATE TYPE tipo_reserva AS ENUM ('Iniciado','Avisado','Anulado');
+CREATE TYPE tipo_reserva AS ENUM ('Iniciado','Avisado','Anulado'); 
 
 CREATE TABLE IF NOT EXISTS ASSOCIADO (
   Codigo SERIAL NOT NULL,
