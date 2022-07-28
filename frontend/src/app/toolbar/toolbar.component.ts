@@ -18,7 +18,11 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  toLoginFuncionarios(){
+  toAreaFuncionarios(){
     this.router.navigate(['/home']);
+  }
+
+  toAreaGerentes(){
+    this.router.navigate(['/area']);
   }
 }

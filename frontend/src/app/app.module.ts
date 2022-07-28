@@ -16,12 +16,15 @@ import { LoginComponent } from './login/login.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { CadastroComponent } from './cadastro/cadastro.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TableComponent } from './table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { AreaComponent } from './area/area.component';
+import { MatDatepickerModule, MAT_DATE_RANGE_SELECTION_STRATEGY } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { CadastroComponent, RangeSelectionStrategy } from './cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { MatSortModule } from '@angular/material/sort';
     ToolbarComponent,
     LoginComponent,
     CadastroComponent,
-    TableComponent
+    TableComponent,
+    AreaComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +54,18 @@ import { MatSortModule } from '@angular/material/sort';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule, 
+    // MatMomentDateModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
+      useClass: RangeSelectionStrategy,
+    },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

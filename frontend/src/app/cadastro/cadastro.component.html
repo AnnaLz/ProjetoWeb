@@ -100,6 +100,56 @@
     </form>
 </div>
 
+<div *ngIf="title == 'Empréstimo'">
+    <form [formGroup]="dados">
+        <div class="row">
+            <mat-form-field floatLabel="always">
+                <mat-label>Número Exemplar</mat-label>
+                <input matInput formControlName="nro_exemplar" type="number">
+            </mat-form-field>
+        </div>
+    
+        <div class="row">
+            <mat-form-field floatLabel="always">
+                <mat-label>ISBN</mat-label>
+                <input matInput formControlName="isbn">
+            </mat-form-field>
+        </div>
+    
+        <div class="row">
+            <mat-form-field floatLabel="always">
+                <mat-label>Associado</mat-label>
+                <input matInput formControlName="codigo_assoc"  type="number">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field floatLabel="always">
+                <mat-label>Data Empréstimo</mat-label>
+                <input matInput formControlName="data_emp">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field floatLabel="always">
+                <mat-label>Data Devolução</mat-label>
+                <input matInput formControlName="data_devol">
+            </mat-form-field>
+        </div>
+<!-- 
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <mat-date-range-input [min]="date" [rangePicker]="picker">
+                    <input matStartDate placeholder="Start date" formControlName="data_emp">
+                    <input matEndDate placeholder="End date" formControlName="data_devol">
+                  </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+        </div> -->
+    </form>
+</div>
+
 <div class="actions">
     <button mat-flat-button class="cancel-btn" (click)="close()">Cancelar</button>
     <button mat-flat-button class="confirm-btn" [disabled]="!dados.valid" (click)="submit()">Salvar</button>

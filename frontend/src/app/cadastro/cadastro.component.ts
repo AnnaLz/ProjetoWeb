@@ -1,8 +1,33 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GeneralService } from '../services/general.service';
 import Swal from 'sweetalert2'
+import { DateAdapter } from '@angular/material/core';
+import { MatDateRangeSelectionStrategy, DateRange } from '@angular/material/datepicker';
+
+@Injectable()
+export class RangeSelectionStrategy<D> implements MatDateRangeSelectionStrategy<D> {
+  constructor(private _dateAdapter: DateAdapter<D>) {}
+
+  selectionFinished(date: D | null): DateRange<D> {
+    return this._createDayRange(date);
+  }
+
+  createPreview(activeDate: D | null): DateRange<D> {
+    return this._createDayRange(activeDate);
+  }
+
+  private _createDayRange(date: D | null): DateRange<D> {
+    if (date) {
+      const start = this._dateAdapter.addCalendarDays(date, 0);
+      const end = this._dateAdapter.addCalendarDays(date, 7);
+      return new DateRange<D>(start, end);
+    }
+
+    return new DateRange<D>(null, null);
+  }
+}
 
 @Component({
   selector: 'app-cadastro',
@@ -12,7 +37,8 @@ import Swal from 'sweetalert2'
 export class CadastroComponent implements OnInit {
   title: string;
   dados: FormGroup;
-
+  date = new Date();
+  
   constructor(
     public service: GeneralService,
     public dialogRef: MatDialogRef<CadastroComponent>,
@@ -50,6 +76,16 @@ export class CadastroComponent implements OnInit {
           numero: new FormControl(null, Validators.required),
           isbn: new FormControl(null, Validators.required),
           preco: new FormControl(null, [Validators.required])
+        });
+        break;
+
+      case 'Empréstimo':
+        this.dados = new FormGroup({
+          nro_exemplar: new FormControl(null, Validators.required),
+          isbn: new FormControl(null, Validators.required),
+          codigo_assoc: new FormControl(null, [Validators.required]),
+          data_emp: new FormControl(null, [Validators.required]),
+          data_devol: new FormControl(null, [Validators.required]),
         });
         break;
     }
@@ -121,6 +157,30 @@ export class CadastroComponent implements OnInit {
               title: 'Houve um erro ao realizar o cadastro.',
             })
           )
+        });
+        break;
+
+      case 'Empréstimo':
+        body = {
+          nro_exemplar: this.dados.value.nro_exemplar,
+          isbn: this.dados.value.isbn,
+          associado: this.dados.value.associado,
+          data_emp: this.dados.value.data_emp,
+          data_devol: this.dados.value.data_devol,
+          codigo_assoc: this.dados.value.codigo_assoc
+        }
+
+        console.log(this.dados.value.data_emp)
+    
+        this.service.createEmprestimo(body).subscribe(response => {
+          if(response){
+            Swal.fire({
+              icon: 'success',
+              title: 'Cadastro realizado com sucesso!',
+            });
+    
+            this.dialogRef.close();
+          }
         });
         break;
     }

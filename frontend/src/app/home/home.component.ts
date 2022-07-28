@@ -53,7 +53,8 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // location.reload();
+     this.show = false;
+     this.loadData();
     });
   }
 
